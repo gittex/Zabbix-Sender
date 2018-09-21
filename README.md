@@ -9,11 +9,11 @@ to the zabbix server/proxy at "my.zabbix.server.example" on port "10055".
 
     use Zabbix::Sender;
 
-    my $Sender = Zabbix::Sender->new({
+    my $sender = Zabbix::Sender->new({
        'server' => 'my.zabbix.server.example',
        'port' => 10055,
     });
-    $Sender->send('my.zabbix.item','OK');
+    $sender->send('my.zabbix.item','OK');
 
 # SUBROUTINES/METHODS
 
@@ -21,29 +21,29 @@ to the zabbix server/proxy at "my.zabbix.server.example" on port "10055".
 
 Name of the host for which to submit items to Zabbix.  Initialized by \_init\_hostname. You can set it either using
 
-    $Sender->hostname('another.hostname');
+    $sender->hostname('another.hostname');
 
 or during creation time of Zabbix::Sender
 
-    my $Sender = Zabbix::Sender->new({
+    my $sender = Zabbix::Sender->new({
         'server' => 'my.zabbix.server.example',
         'hostname' => 'another.hostname',
     });
 
 You can also query the current setting using
 
-    my $current_hostname = $Sender->hostname();
+    my $current_hostname = $sender->hostname();
 
 ## strict
 
 Use the strict setting to make Zabbix::Sender check the return values from
 Zabbix:
 
-    $Sender->strict(1);
+    $sender->strict(1);
 
 You can also query the current setting using
 
-    my $is_strict = $Sender->strict();
+    my $is_strict = $sender->strict();
 
 ## \_init\_json
 
@@ -82,7 +82,7 @@ Returns undef if everything is alright, a message otherwise.
 This method is called when the strict setting of Zabbix::Sender
 is active:
 
-    my $Sender = Zabbix::Sender->new({
+    my $sender = Zabbix::Sender->new({
         'server' => 'my.zabbix.server.example',
         'strict' => 1,
     });
@@ -183,37 +183,3 @@ under the terms of either: the GNU General Public License as published
 by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
-This is the README file for Zabbix-Sender,
-a pure-perl implementation of zabbix-sender.
-
-# MISC.
-
-## Description
-
-Zabbix-Sender provides a pure-perl
-implementation of zabbix-sender.
-
-## Installation
-
-This package uses Dist::Zilla.
-
-Use
-
-dzil build
-
-to create a release tarball which can be
-unpacked and installed like any other EUMM
-distribution.
-
-perl Makefile.PL
-
-make
-
-make test
-
-make install
-
-## Documentation
-
-Please see perldoc Zabbix::Sender.
-
